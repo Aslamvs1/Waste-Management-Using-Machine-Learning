@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Waste Segregation</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #051d17, #2a5145, #34ff9d);
+            background-attachment: fixed;
+            background-size: cover;
+            color: white;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .navbar {
+            background: rgba(0, 128, 75, 0.9);
+            padding: 15px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            animation: slideDown 1s ease-in-out;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 50px;
+            justify-content: center;
+            flex-grow: 1;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            transition: transform 0.3s, opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.7;
+            transform: scale(1.1);
+        }
+
+        .about-container {
+            padding: 120px 10%;
+            text-align: center;
+        }
+
+        .about-title {
+            font-size: 55px;
+            color: #A3EBB1;
+            margin-bottom: 20px;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .about-subtitle {
+            font-size: 24px;
+            color: #D4F4DD;
+            margin-bottom: 40px;
+            animation: slideUp 1.5s ease-in-out;
+        }
+
+        .about-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .about-text {
+            flex: 1;
+            text-align: left;
+            max-width: 600px;
+        }
+
+        .about-text p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #D4F4DD;
+            margin-bottom: 20px;
+        }
+
+        .about-image {
+            flex: 1;
+            max-width: 500px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            animation: slideIn 1.5s ease-in-out;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .about-image img:hover {
+            transform: scale(1.1);
+        }
+
+        .mission-vision {
+            display: flex;
+            gap: 40px;
+            margin-top: 60px;
+            animation: fadeIn 2.5s ease-in-out;
+        }
+
+        .mission, .vision {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .mission:hover, .vision:hover {
+            transform: translateY(-10px);
+        }
+
+        .mission h3, .vision h3 {
+            font-size: 28px;
+            color: #A3EBB1;
+            margin-bottom: 15px;
+        }
+
+        .mission p, .vision p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #D4F4DD;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(-100px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">🌿 Waste Segregation</div>
+        <ul class="nav-links">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="upload.html">Upload</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <section class="about-container">
+        <h1 class="about-title">About Us</h1>
+        <p class="about-subtitle">We are committed to creating a sustainable future through proper waste management.</p>
+        
+        <div class="about-content">
+            <div class="about-text">
+                <p>
+                    At Waste Segregation, we believe in the power of responsible waste management to protect our planet. 
+                    Our mission is to educate and empower individuals and communities to segregate waste effectively, 
+                    ensuring that recyclable materials are reused and harmful waste is disposed of safely.
+                </p>
+                <p>
+                    With innovative solutions and a dedicated team, we aim to reduce environmental pollution and promote 
+                    a circular economy. Join us in making a difference for a cleaner, greener future.
+                </p>
+            </div>
+            <div class="about-image">
+                <img src="a.png" alt="About Us Image">
+            </div>
+        </div>
+
+        <div class="mission-vision">
+            <div class="mission">
+                <h3>Our Mission</h3>
+                <p>
+                    To promote sustainable waste management practices and reduce environmental pollution through 
+                    education, innovation, and community engagement.
+                </p>
+            </div>
+            <div class="vision">
+                <h3>Our Vision</h3>
+                <p>
+                    A world where waste is seen as a resource, and every individual contributes to a cleaner, 
+                    healthier planet.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Add any interactive JavaScript here if needed
+    </script>
+</body>
+</html>

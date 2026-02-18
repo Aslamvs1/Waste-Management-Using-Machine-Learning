@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waste Segregation - Smart Waste Management</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #08914F;
+            --secondary-color: #0A7541;
+            --accent-color: #34ff9d;
+            --bg-gradient: linear-gradient(135deg, #051d17, #2a5145, #34ff9d);
+            --card-bg: rgba(255, 255, 255, 0.15);
+            --text-light: #D4F4DD;
+            --text-highlight: #A3EBB1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: var(--bg-gradient);
+            background-attachment: fixed;
+            background-size: cover;
+            color: white;
+            text-align: center;
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        .navbar {
+            background: linear-gradient(90deg, #056235, #08914F);
+            padding: 15px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            animation: slideDown 1s ease-in-out;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            animation: fadeIn 1s ease-in-out;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            font-size: 32px;
+            color: var(--accent-color);
+        }
+
+        .nav-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            flex-grow: 1;
+            gap: 80px;
+        }
+
+        .nav-links li {
+            display: inline;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--accent-color);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .hero-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 140px 80px 40px;
+            min-height: 100vh;
+        }
+
+        .hero-content {
+            flex: 1;
+            text-align: left;
+            animation: slideIn 1.5s ease-in-out;
+            max-width: 600px;
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-title {
+            font-size: 50px;
+            color: var(--text-highlight);
+            animation: fadeIn 1.5s ease-in-out;
+            margin-bottom: 20px;
+        }
+
+        .hero-text {
+            font-size: 20px;
+            color: var(--text-light);
+            animation: slideUp 2s ease-in-out;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .btn {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.3s;
+            font-weight: 600;
+            display: inline-block;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn i {
+            margin-left: 8px;
+        }
+
+        .hero-image img {
+            width: 550px;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            animation: float 5s ease-in-out infinite;
+        }
+
+        .feature-section {
+            padding: 60px 40px;
+        }
+
+        .section-title {
+            font-size: 36px;
+            margin-bottom: 50px;
+            color: var(--text-highlight);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            height: 3px;
+            width: 100px;
+            background: var(--accent-color);
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: -10px;
+        }
+
+        .card-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        }
+
+        .card {
+            width: 280px;
+            height: 380px;
+            background: var(--card-bg);
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            text-align: center;
+            color: white;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s;
+            padding: 30px 20px;
+            backdrop-filter: blur(5px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
+            z-index: -1;
+        }
+
+        .card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .card img {
+            width: 120px;
+            height: 120px;
+            object-fit: contain;
+            margin-bottom: 20px;
+            transition: all 0.3s;
+        }
+
+        .card:hover img {
+            transform: scale(1.1);
+        }
+
+        .card h3 {
+            margin: 10px 0;
+            font-size: 22px;
+            color: var(--text-highlight);
+        }
+
+        .card p {
+            margin-bottom: 20px;
+            color: var(--text-light);
+            font-size: 16px;
+        }
+
+        .stats-section {
+            background: rgba(5, 29, 23, 0.7);
+            padding: 80px 40px;
+            margin: 40px 0;
+        }
+
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 10px;
+        }
+
+        .stat-text {
+            font-size: 18px;
+            color: var(--text-light);
+        }
+
+        footer {
+            background: rgba(5, 29, 23, 0.9);
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 40px;
+        }
+
+        .footer-logo {
+            font-size: 24px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .footer-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 22px;
+            transition: all 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: var(--accent-color);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            margin-top: 30px;
+            color: var(--text-light);
+            font-size: 14px;
+        }
+
+        /* Animation Keyframes */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(-50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Mobile responsiveness */
+        @media screen and (max-width: 1024px) {
+            .hero-section {
+                flex-direction: column;
+                padding: 120px 20px 40px;
+            }
+
+            .hero-content {
+                text-align: center;
+                margin-bottom: 40px;
+            }
+
+            .hero-image img {
+                width: 90%;
+                max-width: 400px;
+            }
+
+            .nav-links {
+                gap: 30px;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 15px;
+            }
+
+            .logo {
+                margin-bottom: 15px;
+            }
+
+            .nav-links {
+                gap: 15px;
+            }
+
+            .hero-title {
+                font-size: 36px;
+            }
+
+            .hero-text {
+                font-size: 18px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .nav-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .card-container {
+                gap: 20px;
+            }
+
+            .stat-number {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fas fa-recycle"></i>
+            <span>Waste Segregation</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="upload.html">Upload</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">Smart Waste Segregation</h1>
+            <p class="hero-text">Harness the power of AI to properly identify and categorize waste. Our image processing technology helps you segregate waste correctly, reducing environmental pollution and promoting sustainable waste management practices.</p>
+            <a href="upload.html" class="btn">Try It Now <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="hero-image">
+            <img src="a1.png" alt="Waste Segregation Illustration">
+        </div>
+    </section>
+
+    <section class="feature-section">
+        <h2 class="section-title">How It Works</h2>
+        <div class="card-container">
+            <div class="card">
+                <img src="w3.png" alt="Upload Icon">
+                <h3>Upload</h3>
+                <p>Take a photo of your waste item or upload an existing image to our platform.</p>
+                <a href="upload.html" class="btn">Upload Image</a>
+            </div>
+            
+            <div class="card">
+                <img src="w3.png" alt="Analyze Icon">
+                <h3>Analyze</h3>
+                <p>Our AI model processes the image and identifies the type of waste material.</p>
+                <a href="about.html" class="btn">Learn More</a>
+            </div>
+            
+            <div class="card">
+                <img src="w3.png" alt="About Icon">
+                <h3>About</h3>
+                <p>Get instant results on how to properly dispose of your waste item.</p>
+                <a href="about.html" class="btn">See Examples</a>
+            </div>
+            
+            <div class="card">
+                <img src="w3.png" alt="Contact Icon">
+                <h3>Contact</h3>
+                <p>Track your contribution to waste reduction and environmental conservation.</p>
+                <a href="contact.html" class="btn">View Impact</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats-section">
+        <h2 class="section-title">Our Impact</h2>
+        <div class="stats-container">
+            <div class="stat-item">
+                <div class="stat-number" id="users-count">0</div>
+                <div class="stat-text">Active Users</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="images-count">0</div>
+                <div class="stat-text">Images Processed</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="waste-count">0</div>
+                <div class="stat-text">Kg Waste Properly Segregated</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="carbon-count">0</div>
+                <div class="stat-text">Kg CO₂ Emissions Saved</div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <i class="fas fa-recycle"></i>
+                <span>Waste Segregation</span>
+            </div>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="upload.html">Upload</a>
+                <a href="contact.html">Contact</a>
+                <a href="privacy.html">Privacy Policy</a>
+            </div>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2025 Waste Segregation. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // Animate statistics numbers
+        function animateCounters() {
+            const userTarget = 5000;
+            const imagesTarget = 25000;
+            const wasteTarget = 15000;
+            const carbonTarget = 8500;
+            
+            const userElement = document.getElementById('users-count');
+            const imagesElement = document.getElementById('images-count');
+            const wasteElement = document.getElementById('waste-count');
+            const carbonElement = document.getElementById('carbon-count');
+            
+            let userCount = 0;
+            let imagesCount = 0;
+            let wasteCount = 0;
+            let carbonCount = 0;
+            
+            const duration = 2000; // 2 seconds
+            const framesPerSecond = 60;
+            const totalFrames = duration / 1000 * framesPerSecond;
+            
+            const userIncrement = userTarget / totalFrames;
+            const imagesIncrement = imagesTarget / totalFrames;
+            const wasteIncrement = wasteTarget / totalFrames;
+            const carbonIncrement = carbonTarget / totalFrames;
+            
+            const interval = setInterval(() => {
+                userCount += userIncrement;
+                imagesCount += imagesIncrement;
+                wasteCount += wasteIncrement;
+                carbonCount += carbonIncrement;
+                
+                if (userCount >= userTarget) {
+                    userCount = userTarget;
+                    imagesCount = imagesTarget;
+                    wasteCount = wasteTarget;
+                    carbonCount = carbonTarget;
+                    clearInterval(interval);
+                }
+                
+                userElement.textContent = Math.floor(userCount).toLocaleString();
+                imagesElement.textContent = Math.floor(imagesCount).toLocaleString();
+                wasteElement.textContent = Math.floor(wasteCount).toLocaleString();
+                carbonElement.textContent = Math.floor(carbonCount).toLocaleString();
+            }, 1000 / framesPerSecond);
+        }
+        
+        // Animate counters when they are in viewport
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+        
+        o

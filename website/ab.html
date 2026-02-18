@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Waste Segregation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Base Styles */
+        :root {
+            --primary-color: #00804b;
+            --accent-color: #34ff9d;
+            --light-accent: #A3EBB1;
+            --text-color: #D4F4DD;
+            --bg-gradient: linear-gradient(135deg, #051d17, #2a5145, #34ff9d);
+            --card-bg: rgba(255, 255, 255, 0.15);
+            --shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg-gradient);
+            background-attachment: fixed;
+            background-size: cover;
+            color: white;
+            overflow-x: hidden;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        /* Particle Background */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: rgba(0, 128, 75, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 15px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            animation: slideDown 1s ease-in-out;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: var(--accent-color);
+        }
+
+        .nav-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 50px;
+            justify-content: center;
+            flex-grow: 1;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            transition: all 0.3s;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* About Section */
+        .about-container {
+            padding: 120px 10%;
+            text-align: center;
+        }
+
+        .section-divider {
+            width: 80px;
+            height: 4px;
+            background: var(--accent-color);
+            margin: 0 auto 40px;
+            border-radius: 2px;
+        }
+
+        .about-title {
+            font-size: 55px;
+            color: var(--light-accent);
+            margin-bottom: 20px;
+            animation: fadeIn 1.5s ease-in-out;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .about-subtitle {
+            font-size: 24px;
+            color: var(--text-color);
+            margin-bottom: 40px;
+            animation: slideUp 1.5s ease-in-out;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .about-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+            animation: fadeIn 2s ease-in-out;
+            margin-bottom: 60px;
+        }
+
+        .about-text {
+            flex: 1;
+            text-align: left;
+            max-width: 600px;
+        }
+
+        .about-text p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: var(--text-color);
+            margin-bottom: 20px;
+        }
+
+        .highlight {
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        .about-image {
+            flex: 1;
+            max-width: 500px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            animation: slideIn 1.5s ease-in-out;
+            position: relative;
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 128, 75, 0.2);
+            z-index: 1;
+            transition: background 0.3s;
+        }
+
+        .about-image:hover::before {
+            background: rgba(0, 128, 75, 0);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            transition: transform 0.5s ease-in-out;
+            display: block;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Mission & Vision */
+        .mission-vision {
+            display: flex;
+            gap: 40px;
+            margin-top: 60px;
+            animation: fadeIn 2.5s ease-in-out;
+        }
+
+        .mission, .vision {
+            flex: 1;
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+        }
+
+        .mission:hover, .vision:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .mission h3, .vision h3 {
+            font-size: 28px;
+            color: var(--light-accent);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .mission p, .vision p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--text-color);
+        }
+
+        /* Stats Section */
+        .stats-section {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 80px 0;
+            padding: 20px;
+            background: var(--card-bg);
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            animation: fadeIn 3s ease-in-out;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            transition: transform 0.3s;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-value {
+            font-size: 48px;
+            font-weight: bold;
+            color: var(--accent-color);
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 18px;
+            color: var(--text-color);
+        }
+
+        /* Team Section */
+        .team-section {
+            margin-top: 80px;
+            animation: fadeIn 3.5s ease-in-out;
+        }
+
+        .team-title {
+            font-size: 36px;
+            color: var(--light-accent);
+            margin-bottom: 40px;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .team-member {
+            background: var(--card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+        }
+
+        .team-photo {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .team-info {
+            padding: 20px;
+        }
+
+        .team-name {
+            font-size: 22px;
+            color: var(--light-accent);
+            margin-bottom: 5px;
+        }
+
+        .team-role {
+            font-size: 16px;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+        }
+
+        .team-bio {
+            font-size: 14px;
+            color: var(--text-color);
+            margin-bottom: 15px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            color: var(--text-color);
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            margin-top: 80px;
+            padding: 50px;
+            background: var(--card-bg);
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            animation: fadeIn 4s ease-in-out;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .cta-title {
+            font-size: 36px;
+            color: var(--light-accent);
+            margin-bottom: 20px;
+        }
+
+        .cta-text {
+            font-size: 18px;
+            color: var(--text-color);
+            margin-bottom: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 18px;
+            transition: all 0.3s;
+            border: 2px solid var(--primary-color);
+        }
+
+        .cta-button:hover {
+            background: transparent;
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Animations */
+        @keyframes slideDown {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(-100px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) translateX(0); }
+            25% { transform: translateY(-20px) translateX(10px); }
+            50% { transform: translateY(0) translateX(20px); }
+            75% { transform: translateY(20px) translateX(10px); }
+            100% { transform: translateY(0) translateX(0); }
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+
+            .mission-vision {
+                flex-direction: column;
+            }
+
+            .about-image {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 20px;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: rgba(0, 128, 75, 0.95);
+                flex-direction: column;
+                padding: 40px 0;
+                transition: left 0.3s;
+                gap: 30px;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .about-title {
+                font-size: 40px;
+            }
+
+            .about-subtitle {
+                font-size: 20px;
+            }
+
+            .stats-section {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .about-container {
+                padding: 100px 5%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Particle Background -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo"><i class="fas fa-recycle"></i> Waste Segregation</div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="upload.html">Upload</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="mobile-menu" id="mobileMenu">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+    
+    <!-- About Section -->
+    <section class="about-container">
+        <h1 class="about-title">About Us</h1>
+        <div class="section-divider"></div>
+        <p class="about-subtitle">We are committed to creating a sustainable future through proper waste management and innovative solutions.</p>
+        
+        <div class="about-content">
+            <div class="about-text">
+                <p>
+                    At <span class="highlight">Waste Segregation</span>, we believe in the power of responsible waste management to protect our planet. 
+                    Our mission is to educate and empower individuals and communities to segregate waste effectively, 
+                    ensuring that recyclable materials are reused and harmful waste is disposed of safely.
+                </p>
+                <p>
+                    With innovative solutions and a dedicated team of environmental experts, we aim to reduce environmental pollution and promote 
+                    a circular economy where waste becomes a valuable resource rather than a problem. Join us in making a difference for a cleaner, greener future.
+                </p>
+                <p>
+                    Through education, technology, and community involvement, we're creating sustainable solutions that have a real impact on our environment and future generations.
+                </p>
+            </div>
+            <div class="about-image">
+                <img src="a.png" alt="About Us Image">
+            </div>
+        </div>
+
+        <!-- Stats Section -->
+        <div class="stats-section">
+            <div class="stat-item">
+                <div class="stat-value" id="communityCount">5K+</div>
+                <div class="stat-label">Community Members</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="wasteCount">200+</div>
+                <div class="stat-label">Tons of Waste Recycled</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="projectCount">50+</div>
+                <div class="stat-label">Awareness Programs</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="volunteerCount">300+</div>
+                <div class="stat-label">Active Volunteers</div>
+            </div>
+        </div>
+
+        <!-- Mission & Vision Section -->
+        <div class="mission-vision">
+            <div class="mission">
+                <h3><i class="fas fa-bullseye"></i> Our Mission</h3>
+                <p>
+                    To promote sustainable waste management practices and reduce environmental pollution through 
+                    education, innovation, and community engagement. We strive to create awareness about proper waste segregation 
+                    and implement effective solutions that make recycling accessible to everyone.
+                </p>
+            </div>
+            <div class="vision">
+                <h3><i class="fas fa-eye"></i> Our Vision</h3>
+                <p>
+                    A world where waste is seen as a resource, and every individual contributes to a cleaner, 
+                    healthier planet. We envision communities where proper waste management is second nature, 
+                    recycling rates approach 100%, and the concept of "waste" is replaced by "resource" in our collective mindset.
+                </p>
+            </div>
+        </div>
+
+        <!-- Team Section -->
+        <div class="team-section">
+            <h2 class="team-title">Our Team</h2>
+            <div class="section-divider"></div>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img class="team-photo" src="/api/placeholder/400/320" alt="Team Member">
+                    <div class="team-info">
+                        <h3 class="team-name">Muhammed Aslam</h3>
+                        <p class="team-role">Founder & CEO</p>
+                        <p class="team-bio">Environmental engineer with 15+ years of experience in waste management and sustainability initiatives.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <img class="team-photo" src="/api/placeholder/400/320" alt="Team Member">
+                    <div class="team-info">
+                        <h3 class="team-name">Aysha Narmin</h3>
+                        <p class="team-role">Technical Director</p>
+                        <p class="team-bio">Technology expert specializing in developing waste segregation systems and recycling technologies.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <img class="team-photo" src="/api/placeholder/400/320" alt="Team Member">
+                    <div class="team-info">
+                        <h3 class="team-name">Sulekha Hannath</h3>
+                        <p class="team-role">Community Outreach</p>
+                        <p class="team-bio">Dedicated to building relationships and creating educational programs for communities and schools.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <h2 class="cta-title">Join Our Mission</h2>
+            <p class="cta-text">
+                Be part of the solution for a sustainable future. Together, we can make a significant impact 
+                on waste management and environmental conservation.
+            </p>
+            <a href="contact.html" class="cta-button">Get Involved</a>
+        </div>
+    </section>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobileMenu').addEventListener('click', function() {
+            document.getElementById('navLinks').classList.toggle('active');
+            
+            const icon = this.querySelector('i');
+            if (icon.classList.contains('fa-bars')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Create animated background particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 20;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Random size between 5 and 20px
+                const size = Math.random() * 15 + 5;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // Random position
+                particle.style.top = `${Math.random() * 100}%`;
+                particle.style.left = `${Math.random() * 100}%`;
+                
+                // Random animation delay
+                particle.style.animationDelay = `${Math.random() * 15}s`;
+                
+                // Random opacity
+                particle.style.opacity = Math.random() * 0.3;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Animate stats counter
+        function animateCounter(elementId, target, duration = 2000) {
+            const element = document.getElementById(elementId);
+            const start = 0;
+            const increment = Math.ceil(target / (duration / 50));
+            let current = start;
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target + '+';
+                    clearInterval(timer);
+                } else {
+                    element.textContent = current + '+';
+                }
+            }, 50);
+        }
+
+        // Run animations when page loads
+        window.addEventListener('load', function() {
+            createParticles();
+            
+            // Animate stats with some delay
+            setTimeout(() => {
+                animateCounter('communityCount', 5000);
+                animateCounter('wasteCount', 200);
+                animateCounter('projectCount', 50);
+                animateCounter('volunteerCount', 300);
+            }, 1000);
+        });
+
+        // Add scroll animations
+        window.addEventListener('scroll', function() {
+            const elements = document.querySelectorAll('.mission, .vision, .team-member, .stat-item');
+            
+            elements.forEach(element => {
+                const position = element.getBoundingClientRect();
+                
+                // If element is in viewport
+                if(position.top < window.innerHeight && position.bottom >= 0) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
