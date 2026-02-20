@@ -1,10 +1,4 @@
-Here is a comprehensive `README.md` template tailored to the files and structure currently in your repository.
 
-Since some specifics about your model architecture and deployment steps aren't fully detailed in the repository's root, I have provided placeholders (like `[Insert specific model here]`) and a partial setup guide. Could you clarify which framework (e.g., TensorFlow, PyTorch) you used for `en_training.py` and what tools you are using to run the backend and frontend?
-
----
-
-```markdown
 # Waste Management Using Machine Learning ♻️
 
 An intelligent waste management and segregation system that utilizes Machine Learning for automated waste classification. This project includes a complete pipeline from image preprocessing and model training to a fully functional web interface.
