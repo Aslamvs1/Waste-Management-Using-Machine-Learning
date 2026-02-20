@@ -96,10 +96,9 @@ cd ../waste-segregation-frontend
 
 ## 📄 License
 
-[Specify your license here, e.g., MIT License]
+## 📄 License
 
-```
+This project is licensed under the [MIT License](./LICENSE) - see the LICENSE file for details.
 
-Once you let me know the specific frameworks used for the backend/frontend and the ML model details, I can refine the installation steps and commands further!
 
-```
+
